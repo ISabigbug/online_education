@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.eduservice.mapper.EduChapterMapper">
+
+    <resultMap id="BaseResultMap" type="com.cn.eduservice.domain.EduChapter">
+            <id property="id" column="id" jdbcType="CHAR"/>
+            <result property="courseId" column="course_id" jdbcType="CHAR"/>
+            <result property="title" column="title" jdbcType="VARCHAR"/>
+            <result property="sort" column="sort" jdbcType="OTHER"/>
+            <result property="gmtCreate" column="gmt_create" jdbcType="TIMESTAMP"/>
+            <result property="gmtModified" column="gmt_modified" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,course_id,title,
+        sort,gmt_create,gmt_modified
+    </sql>
+    <delete id="deleteByCourseId">
+        delete
+        from edu_chapter
+        where course_id = #{courseId,jdbcType=VARCHAR}
+    </delete>
+</mapper>
