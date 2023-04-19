@@ -1,5 +1,6 @@
 package com.cn.eduservice.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cn.eduservice.domain.EduCourse;
 import com.cn.eduservice.domain.EduCourseDescription;
@@ -13,7 +14,10 @@ import com.cn.eduservice.service.EduVideoService;
 import com.cn.servicebase.exception.GuliException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 /**
@@ -120,7 +124,17 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         }
     }
 
-
+    @Cacheable(
+            key = "'findCourseList'",
+            value = {"courseList"}
+    )
+    public List<EduCourse> findEightCourse() {
+        LambdaQueryWrapper<EduCourse> lambdaQueryWrapper = new LambdaQueryWrapper();
+        lambdaQueryWrapper.orderByDesc(EduCourse::getId);
+        lambdaQueryWrapper.last("limit 8");
+        List<EduCourse> courseList = baseMapper.selectList(lambdaQueryWrapper);
+        return courseList;
+    }
 }
 
 

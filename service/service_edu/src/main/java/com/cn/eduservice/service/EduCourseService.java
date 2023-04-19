@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.cn.eduservice.domain.vo.CoursePublishVo;
 import com.cn.eduservice.domain.vo.CourseVo;
 
+import java.util.List;
+
 /**
  * @author Lenovo
  * @description 针对表【edu_course(课程)】的数据库操作Service
@@ -28,4 +30,6 @@ public interface EduCourseService extends IService<EduCourse> {
 
     //7.根据课程ID删除课程信息
     void removeCourseByCid(String cid);
+
+    List<EduCourse> findEightCourse();
 }

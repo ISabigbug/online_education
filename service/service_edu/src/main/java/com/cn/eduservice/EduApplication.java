@@ -12,7 +12,7 @@ import org.springframework.context.annotation.ComponentScan;
  * @Description:
  */
 @ComponentScan("com.cn")
-//@EnableDiscoveryClient //Nacos注册
+@EnableDiscoveryClient //Nacos注册
 @SpringBootApplication
 @EnableFeignClients
 public class EduApplication {
