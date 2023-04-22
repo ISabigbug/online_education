@@ -1,10 +1,10 @@
 package com.cn.eduservice.mapper;
+import com.cn.eduservice.domain.frontvo.CourseWebVo;
 import org.apache.ibatis.annotations.Param;
 
 import com.cn.eduservice.domain.EduCourse;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.cn.eduservice.domain.vo.CoursePublishVo;
-import com.cn.eduservice.domain.vo.CourseVo;
 
 /**
 * @author Lenovo
@@ -18,6 +18,7 @@ public interface EduCourseMapper extends BaseMapper<EduCourse> {
 
     int updateStatusById(@Param("status") String status, @Param("id") String id);
 
+    CourseWebVo getcourseWebVo(@Param("cid") String cid);
 }
 
 

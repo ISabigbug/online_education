@@ -1,11 +1,15 @@
 package com.cn.eduservice.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cn.eduservice.domain.EduCourse;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.cn.eduservice.domain.frontvo.CourseQueryVo;
+import com.cn.eduservice.domain.frontvo.CourseWebVo;
 import com.cn.eduservice.domain.vo.CoursePublishVo;
 import com.cn.eduservice.domain.vo.CourseVo;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Lenovo
@@ -36,4 +40,10 @@ public interface EduCourseService extends IService<EduCourse> {
 
     //9.根据讲师ID查询授课信息
     List<EduCourse> getCourseByTeacherId(String teacherId);
+
+    //10.前台条件分页查询课程信息
+    Map<String, Object> pageCourseFront(Page<EduCourse> pageCourse, CourseQueryVo courseQueryVo);
+
+    //11.前台课程基本信息
+    CourseWebVo getcourseWebVo(String cid);
 }

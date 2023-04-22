@@ -30,7 +30,7 @@ public class TeacherFrontController {
     @GetMapping({"pageTeacherFront/{page}/{limit}"})
     public Result pageTeacherFront(@PathVariable long page, @PathVariable long limit) {
         Page<EduTeacher> pageTeacher = new Page(page, limit);
-        Map<String, Object> teacherFrontList = this.eduTeacherService.pageTeacherFront(pageTeacher);
+        Map<String, Object> teacherFrontList = eduTeacherService.pageTeacherFront(pageTeacher);
         return Result.success().data(teacherFrontList);
     }
 

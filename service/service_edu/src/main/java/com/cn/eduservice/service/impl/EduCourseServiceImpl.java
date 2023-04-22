@@ -1,9 +1,14 @@
 package com.cn.eduservice.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cn.eduservice.domain.EduCourse;
 import com.cn.eduservice.domain.EduCourseDescription;
+import com.cn.eduservice.domain.EduTeacher;
+import com.cn.eduservice.domain.frontvo.CourseQueryVo;
+import com.cn.eduservice.domain.frontvo.CourseWebVo;
 import com.cn.eduservice.domain.vo.CoursePublishVo;
 import com.cn.eduservice.domain.vo.CourseVo;
 import com.cn.eduservice.service.EduChapterService;
@@ -17,7 +22,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -142,6 +149,42 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         lambdaQueryWrapper.eq(EduCourse::getTeacherId,teacherId).orderByDesc(EduCourse::getGmtModified);
         List<EduCourse> courseList = baseMapper.selectList(lambdaQueryWrapper);
         return courseList;
+    }
+
+    @Override
+    public Map<String, Object> pageCourseFront(Page<EduCourse> pageCourse, CourseQueryVo courseQueryVo) {
+        //根据分页条件查询
+        LambdaQueryWrapper<EduCourse> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+        lambdaQueryWrapper.eq(StringUtils.isNotBlank(courseQueryVo.getSubjectParentId()),EduCourse::getSubjectParentId,courseQueryVo.getSubjectParentId())
+                          .eq(StringUtils.isNotBlank(courseQueryVo.getSubjectId()),EduCourse::getSubjectId,courseQueryVo.getSubjectId())
+                          .orderByDesc(StringUtils.isNotBlank(courseQueryVo.getBuyCountSort()),EduCourse::getBuyCount)
+                          .orderByDesc(StringUtils.isNotBlank(courseQueryVo.getGmtCreateSort()),EduCourse::getGmtCreate)
+                          .orderByDesc(StringUtils.isNotBlank(courseQueryVo.getPriceSort()),EduCourse::getPrice);
+        baseMapper.selectPage(pageCourse,lambdaQueryWrapper);
+
+        //将查询结果封装到map中
+        List<EduCourse> records = pageCourse.getRecords();
+        long current = pageCourse.getCurrent();
+        long pages = pageCourse.getPages();
+        long size = pageCourse.getSize();
+        long total = pageCourse.getTotal();
+        boolean hasNext = pageCourse.hasNext();
+        boolean hasPrevious = pageCourse.hasPrevious();
+        Map<String, Object> map = new HashMap();
+        map.put("items", records);
+        map.put("current", current);
+        map.put("pages", pages);
+        map.put("size", size);
+        map.put("total", total);
+        map.put("hasNext", hasNext);
+        map.put("hasPrevious", hasPrevious);
+        return map;
+    }
+
+    @Override
+    public CourseWebVo getcourseWebVo(String cid) {
+        CourseWebVo courseWebVo = baseMapper.getcourseWebVo(cid);
+        return courseWebVo;
     }
 }
 
