@@ -5,8 +5,10 @@ import com.cn.commonutils.Result;
 import com.cn.educenter.domain.UcenterMember;
 import com.cn.educenter.domain.vo.RegisterVo;
 import com.cn.educenter.service.UcenterMemberService;
-import javax.annotation.Resource;
+
 import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,11 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping({"/educenter/menmber"})
 @CrossOrigin
 public class UcenterMemberController {
-    @Resource
+    @Autowired
     private UcenterMemberService ucenterMemberService;
-
-    public UcenterMemberController() {
-    }
 
     @PostMapping({"login"})
     public Result loginUser(@RequestBody UcenterMember ucenterMember) {

@@ -12,4 +12,5 @@ public interface UcenterMemberService extends IService<UcenterMember> {
     String wxLogin();
 
     UcenterMember getByOpenId(String openid);
+
 }

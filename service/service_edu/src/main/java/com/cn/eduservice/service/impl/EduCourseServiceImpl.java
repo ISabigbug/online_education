@@ -135,6 +135,14 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         List<EduCourse> courseList = baseMapper.selectList(lambdaQueryWrapper);
         return courseList;
     }
+
+    @Override
+    public List<EduCourse> getCourseByTeacherId(String teacherId) {
+        LambdaQueryWrapper<EduCourse> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+        lambdaQueryWrapper.eq(EduCourse::getTeacherId,teacherId).orderByDesc(EduCourse::getGmtModified);
+        List<EduCourse> courseList = baseMapper.selectList(lambdaQueryWrapper);
+        return courseList;
+    }
 }
 
 

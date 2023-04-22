@@ -13,6 +13,8 @@ import com.cn.educenter.utils.ConstantPropertiesUtil;
 import com.cn.servicebase.exception.GuliException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.regex.Pattern;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
@@ -21,9 +23,6 @@ import org.springframework.stereotype.Service;
 public class UcenterMemberServiceImpl extends ServiceImpl<UcenterMemberMapper, UcenterMember> implements UcenterMemberService {
     @Autowired
     private RedisTemplate<String, String> redisTemplate;
-
-    public UcenterMemberServiceImpl() {
-    }
 
     public String login(UcenterMember ucenterMember) {
         String mobile = ucenterMember.getMobile();
@@ -51,7 +50,7 @@ public class UcenterMemberServiceImpl extends ServiceImpl<UcenterMemberMapper, U
         String mobile = registerVo.getMobile();
         String password = registerVo.getPassword();
         if (!StringUtils.isBlank(code) && !StringUtils.isBlank(nickname) && !StringUtils.isBlank(mobile) && !StringUtils.isBlank(password)) {
-            String redisCode = (String)this.redisTemplate.opsForValue().get(mobile);
+            String redisCode = redisTemplate.opsForValue().get(mobile);
             if (!code.equals(redisCode)) {
                 throw new GuliException(20001, "验证码有误！");
             } else {

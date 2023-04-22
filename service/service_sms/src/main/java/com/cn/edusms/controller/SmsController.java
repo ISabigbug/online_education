@@ -24,9 +24,6 @@ public class SmsController {
     @Autowired
     private RedisTemplate<String, String> redisTemplate;
 
-    public SmsController() {
-    }
-
     @GetMapping({"send/{phone}"})
     public Result send(@PathVariable String phone) {
         String code = (String)this.redisTemplate.opsForValue().get(phone);

@@ -13,8 +13,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SmsServiceImpl implements SmsService {
-    public SmsServiceImpl() {
-    }
 
     public boolean send(String phone, String templateCode, HashMap<String, Object> param) {
         try {

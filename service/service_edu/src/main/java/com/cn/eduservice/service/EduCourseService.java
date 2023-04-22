@@ -31,5 +31,9 @@ public interface EduCourseService extends IService<EduCourse> {
     //7.根据课程ID删除课程信息
     void removeCourseByCid(String cid);
 
+    //8.查询8条热门课程数据
     List<EduCourse> findEightCourse();
+
+    //9.根据讲师ID查询授课信息
+    List<EduCourse> getCourseByTeacherId(String teacherId);
 }
