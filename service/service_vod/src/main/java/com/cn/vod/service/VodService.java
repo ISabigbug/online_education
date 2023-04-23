@@ -16,4 +16,6 @@ public interface VodService {
     boolean removeVod(String vodId);
     //批量删除阿里云视频
     boolean removeVodBatch(List<String> vodIdList);
+    //获取播放凭证
+    String getPlayAuto(String vodId);
 }

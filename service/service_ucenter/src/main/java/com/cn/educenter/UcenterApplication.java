@@ -9,8 +9,6 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan({"com.cn"})
 @MapperScan({"com.cn.educenter.mapper"})
 public class UcenterApplication {
-    public UcenterApplication() {
-    }
 
     public static void main(String[] args) {
         SpringApplication.run(UcenterApplication.class, args);

@@ -9,12 +9,7 @@ import com.cn.educenter.service.UcenterMemberService;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping({"/educenter/menmber"})
@@ -25,20 +20,27 @@ public class UcenterMemberController {
 
     @PostMapping({"login"})
     public Result loginUser(@RequestBody UcenterMember ucenterMember) {
-        String token = this.ucenterMemberService.login(ucenterMember);
+        String token = ucenterMemberService.login(ucenterMember);
         return Result.success().data("token", token);
     }
 
     @PostMapping({"register"})
     public Result registerUser(@RequestBody RegisterVo registerVo) {
-        this.ucenterMemberService.registerUser(registerVo);
+        ucenterMemberService.registerUser(registerVo);
         return Result.success();
     }
 
     @GetMapping({"findUserInfo"})
     public Result findUserInfo(HttpServletRequest request) {
         String memberId = JwtUtils.getMemberIdByJwtToken(request);
-        UcenterMember member = (UcenterMember)this.ucenterMemberService.getById(memberId);
+        UcenterMember member = ucenterMemberService.getById(memberId);
         return Result.success().data("userInfo", member);
+    }
+
+    //根据用户ID获取用户信息
+    @GetMapping("getInfoById/{id}")
+    public UcenterMember getInfoById(@PathVariable String id) {
+        UcenterMember ucenterMember = ucenterMemberService.getById(id);
+        return ucenterMember;
     }
 }

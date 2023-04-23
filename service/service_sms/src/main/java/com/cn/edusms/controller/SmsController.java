@@ -26,7 +26,7 @@ public class SmsController {
 
     @GetMapping({"send/{phone}"})
     public Result send(@PathVariable String phone) {
-        String code = (String)this.redisTemplate.opsForValue().get(phone);
+        String code = redisTemplate.opsForValue().get(phone);
         if (StringUtils.isNotBlank(code)) {
             return Result.success();
         } else {
@@ -38,7 +38,7 @@ public class SmsController {
                 this.redisTemplate.opsForValue().set(phone, code, 5L, TimeUnit.MINUTES);
                 return Result.success();
             } else {
-                return Result.error().message("发送信息失败，请重新尝试!");
+                return Result.error().message(" 发送信息失败，请重新尝试! ");
             }
         }
     }

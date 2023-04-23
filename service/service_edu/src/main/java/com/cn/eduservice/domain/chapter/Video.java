@@ -14,4 +14,8 @@ public class Video {
 
     private String title;
 
+    private Integer isFree;
+
+    private String videoSourceId;
+
 }

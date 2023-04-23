@@ -3,6 +3,7 @@ import com.aliyuncs.DefaultAcsClient;
 import com.aliyuncs.profile.DefaultProfile;
 import com.aliyuncs.vod.model.v20170321.GetVideoPlayAuthRequest;
 import com.aliyuncs.vod.model.v20170321.GetVideoPlayAuthResponse;
+import org.junit.Test;
 
 /**
  * @Project: online_education
@@ -18,12 +19,13 @@ public class testvod {
         return client;
     }
 
+    @Test
     //根据视频ID获取视频播放凭证
-    public static void getPlayAuth() throws com.aliyuncs.exceptions.ClientException {
+    public void getPlayAuth() throws com.aliyuncs.exceptions.ClientException {
         DefaultAcsClient client = initVodClient("LTAI5t6VMpCnb414Ht4rMNwA", "COHrmvMp4NtQnlIwbnDh3gUvVlGWuD");
         GetVideoPlayAuthResponse response = new GetVideoPlayAuthResponse();
         GetVideoPlayAuthRequest request = new GetVideoPlayAuthRequest();
-        request.setVideoId("3fcd8870d5fd71ed80436723b78e0102");
+        request.setVideoId("d00d3840d75671eda0b40764a0ec0102");
         response = client.getAcsResponse(request);
         //播放凭证
         System.out.print("PlayAuth = " + response.getPlayAuth() + "\n");

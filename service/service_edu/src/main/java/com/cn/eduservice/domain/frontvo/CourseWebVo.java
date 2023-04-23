@@ -15,6 +15,7 @@ import java.math.BigDecimal;
 public class CourseWebVo implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @ApiModelProperty(value = "课程ID")
     private String id;
 
     @ApiModelProperty(value = "课程标题")
