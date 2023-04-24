@@ -5,10 +5,9 @@ import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cn.commonutils.JwtUtils;
-import com.cn.educenter.domain.UcenterMember;
+import com.cn.commonutils.ordervo.Menber;
 import com.cn.eduservice.client.UcenterClient;
 import com.cn.eduservice.domain.EduComment;
-import com.cn.eduservice.domain.EduTeacher;
 import com.cn.eduservice.service.EduCommentService;
 import com.cn.eduservice.mapper.EduCommentMapper;
 import com.cn.servicebase.exception.GuliException;
@@ -70,12 +69,12 @@ public class EduCommentServiceImpl extends ServiceImpl<EduCommentMapper, EduComm
         }
 
         //通过用户ID获取详细用户信息
-        UcenterMember ucenterMember = ucenterClient.getInfoById(memberId);
+        Menber menber = ucenterClient.getInfoById(memberId);
 
         //分别存入用户ID、用户昵称和用户头像
         eduComment.setMemberId(memberId);
-        eduComment.setNickname(ucenterMember.getNickname());
-        eduComment.setAvatar(ucenterMember.getAvatar());
+        eduComment.setNickname(menber.getNickname());
+        eduComment.setAvatar(menber.getAvatar());
 
         //存入数据库
         int insert = baseMapper.insert(eduComment);

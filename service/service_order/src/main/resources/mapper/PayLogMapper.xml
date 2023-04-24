@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.eduorder.mapper.PayLogMapper">
+
+    <resultMap id="BaseResultMap" type="com.cn.eduorder.domain.PayLog">
+            <id property="id" column="id" jdbcType="CHAR"/>
+            <result property="orderNo" column="order_no" jdbcType="VARCHAR"/>
+            <result property="payTime" column="pay_time" jdbcType="TIMESTAMP"/>
+            <result property="totalFee" column="total_fee" jdbcType="DECIMAL"/>
+            <result property="transactionId" column="transaction_id" jdbcType="VARCHAR"/>
+            <result property="tradeState" column="trade_state" jdbcType="CHAR"/>
+            <result property="payType" column="pay_type" jdbcType="TINYINT"/>
+            <result property="attr" column="attr" jdbcType="VARCHAR"/>
+            <result property="isDeleted" column="is_deleted" jdbcType="TINYINT"/>
+            <result property="gmtCreate" column="gmt_create" jdbcType="TIMESTAMP"/>
+            <result property="gmtModified" column="gmt_modified" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,order_no,pay_time,
+        total_fee,transaction_id,trade_state,
+        pay_type,attr,is_deleted,
+        gmt_create,gmt_modified
+    </sql>
+</mapper>

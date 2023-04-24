@@ -2,6 +2,7 @@ package com.cn.eduservice.controller.front;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cn.commonutils.Result;
+import com.cn.commonutils.ordervo.Course;
 import com.cn.eduservice.domain.EduCourse;
 import com.cn.eduservice.domain.chapter.Chapter;
 import com.cn.eduservice.domain.frontvo.CourseQueryVo;
@@ -47,5 +48,12 @@ public class EduCourseFrontController {
         //查询当前课程的章节信息
         List<Chapter> chapterList = eduChapterService.findChapterVideo(cid);
         return Result.success().data("courseWebVo",courseWebVo).data("chapterList",chapterList);
+    }
+
+    //3.根据课程ID获取课程信息
+    @GetMapping("getInfoByCid/{cid}")
+    public Course getInfoByCid(@PathVariable String cid) {
+        Course course = eduCourseService.getInfoByCid(cid);
+        return course;
     }
 }

@@ -2,6 +2,7 @@ package com.cn.educenter.controller;
 
 import com.cn.commonutils.JwtUtils;
 import com.cn.commonutils.Result;
+import com.cn.commonutils.ordervo.Menber;
 import com.cn.educenter.domain.UcenterMember;
 import com.cn.educenter.domain.vo.RegisterVo;
 import com.cn.educenter.service.UcenterMemberService;
@@ -39,8 +40,8 @@ public class UcenterMemberController {
 
     //根据用户ID获取用户信息
     @GetMapping("getInfoById/{id}")
-    public UcenterMember getInfoById(@PathVariable String id) {
-        UcenterMember ucenterMember = ucenterMemberService.getById(id);
-        return ucenterMember;
+    public Menber getInfoById(@PathVariable String id) {
+        Menber menber = ucenterMemberService.getUserInfoById(id);
+        return menber;
     }
 }

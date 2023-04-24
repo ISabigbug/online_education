@@ -16,9 +16,6 @@ public class ConstantPropertiesUtil implements InitializingBean {
     public static String WX_OPEN_APP_SECRET;
     public static String WX_OPEN_REDIRECT_URL;
 
-    public ConstantPropertiesUtil() {
-    }
-
     public void afterPropertiesSet() throws Exception {
         WX_OPEN_APP_ID = this.appId;
         WX_OPEN_APP_SECRET = this.appSecret;

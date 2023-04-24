@@ -1,6 +1,7 @@
 package com.cn.eduservice.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.cn.commonutils.ordervo.Course;
 import com.cn.eduservice.domain.EduCourse;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.cn.eduservice.domain.frontvo.CourseQueryVo;
@@ -46,4 +47,7 @@ public interface EduCourseService extends IService<EduCourse> {
 
     //11.前台课程基本信息
     CourseWebVo getcourseWebVo(String cid);
+
+    //12.根据课程ID获取课程信息
+    Course getInfoByCid(String cid);
 }

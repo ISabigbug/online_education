@@ -1,4 +1,4 @@
-package com.cn.eduservice.client;
+package com.cn.eduorder.client;
 
 import com.cn.commonutils.ordervo.Menber;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -8,13 +8,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 /**
  * @Project: online_education
- * @Package: com.cn.eduservice.client
+ * @Package: com.cn.eduorder.client
  * @Description:
  */
-@FeignClient("service-ucenter")
 @Component
+@FeignClient("service-ucenter")
 public interface UcenterClient {
+
     //根据用户ID获取用户信息
     @GetMapping("/educenter/menmber/getInfoById/{id}")
-    public Menber getInfoById(@PathVariable("id") String id);
+    public Menber getInfoById(@PathVariable String id);
+
 }

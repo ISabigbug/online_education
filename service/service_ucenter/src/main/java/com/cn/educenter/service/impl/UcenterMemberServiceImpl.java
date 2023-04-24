@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cn.commonutils.JwtUtils;
 import com.cn.commonutils.MD5;
+import com.cn.commonutils.ordervo.Menber;
 import com.cn.educenter.domain.UcenterMember;
 import com.cn.educenter.domain.vo.RegisterVo;
 import com.cn.educenter.mapper.UcenterMemberMapper;
@@ -13,8 +14,8 @@ import com.cn.educenter.utils.ConstantPropertiesUtil;
 import com.cn.servicebase.exception.GuliException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.regex.Pattern;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
@@ -91,5 +92,13 @@ public class UcenterMemberServiceImpl extends ServiceImpl<UcenterMemberMapper, U
     public UcenterMember getByOpenId(String openid) {
         UcenterMember ucenterMember = baseMapper.selectOneByOpenid(openid);
         return ucenterMember;
+    }
+
+    @Override
+    public Menber getUserInfoById(String id) {
+        UcenterMember ucenterMember = baseMapper.selectById(id);
+        Menber menber = new Menber();
+        BeanUtils.copyProperties(ucenterMember, menber);
+        return menber;
     }
 }

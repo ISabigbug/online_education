@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.cn.commonutils.ordervo.Course;
 import com.cn.eduservice.domain.EduCourse;
 import com.cn.eduservice.domain.EduCourseDescription;
 import com.cn.eduservice.domain.EduTeacher;
@@ -185,6 +186,14 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
     public CourseWebVo getcourseWebVo(String cid) {
         CourseWebVo courseWebVo = baseMapper.getcourseWebVo(cid);
         return courseWebVo;
+    }
+
+    @Override
+    public Course getInfoByCid(String cid) {
+        EduCourse eduCourse = baseMapper.selectById(cid);
+        Course course = new Course();
+        BeanUtils.copyProperties(eduCourse,course);
+        return course;
     }
 }
 

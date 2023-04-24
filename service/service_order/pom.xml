@@ -9,18 +9,24 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>service_edu</artifactId>
+    <artifactId>service_order</artifactId>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
     <dependencies>
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>easyexcel</artifactId>
-            <version>3.1.1</version>
+            <groupId>com.github.wxpay</groupId>
+            <artifactId>wxpay-sdk</artifactId>
+            <version>0.0.3</version>
         </dependency>
+
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
         </dependency>
     </dependencies>
-
 </project>

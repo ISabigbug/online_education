@@ -19,6 +19,7 @@
         <module>service_acl</module>
         <module>service_sms</module>
         <module>service_ucenter</module>
+        <module>service_order</module>
     </modules>
 
     <dependencies>
