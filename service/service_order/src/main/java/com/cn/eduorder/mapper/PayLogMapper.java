@@ -10,7 +10,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 * @Entity com.cn.eduorder.domain.PayLog
 */
 public interface PayLogMapper extends BaseMapper<PayLog> {
-
 }
 
 

@@ -35,4 +35,10 @@
         where
         openid = #{openid,jdbcType=VARCHAR}
     </select>
+
+    <select id="countRegister" resultType="java.lang.Integer">
+        SELECT COUNT(*)s
+        FROM ucenter_member
+        WHERE DATE (gmt_create) = #{day}
+    </select>
 </mapper>

@@ -82,6 +82,7 @@ public class PayLogServiceImpl extends ServiceImpl<PayLogMapper, PayLog>
     @Override
     public Map<String, String> getPayStatus(String orderNo) {
         try {
+
             //1、封装参数
             Map m = new HashMap<>();
             m.put("appid", ConstantPropertiesUtil.WX_PAY_APP_ID);
@@ -119,6 +120,7 @@ public class PayLogServiceImpl extends ServiceImpl<PayLogMapper, PayLog>
         lambdaQueryWrapper.eq(Order::getOrderNo, orderNo);
         Order order = orderService.getOne(lambdaQueryWrapper);
 
+        //修改支付状态
         order.setStatus(1);
         orderService.updateById(order);
 

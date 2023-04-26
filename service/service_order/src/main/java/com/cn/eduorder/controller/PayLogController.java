@@ -46,7 +46,7 @@ public class PayLogController{
             payLogService.updataPayStatus(map);
             return Result.success().message(" 支付成功 ");
         }
-        return Result.success().message(" 正在支付中 ");
+        return Result.error().message(" 正在支付中 ");
     }
 }
 

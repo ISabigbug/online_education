@@ -12,6 +12,8 @@ import org.apache.ibatis.annotations.Param;
 */
 public interface UcenterMemberMapper extends BaseMapper<UcenterMember> {
     UcenterMember selectOneByOpenid(@Param("openid") String openid);
+
+    Integer countRegister(@Param("day") String day);
 }
 
 

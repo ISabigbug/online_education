@@ -35,9 +35,6 @@ public class OrderController{
     @GetMapping("saveOrderByCourseId/{courseId}")
     public Result saveOrderByCourseId(@PathVariable String courseId, HttpServletRequest request) {
         String memberId = JwtUtils.getMemberIdByJwtToken(request);
-        if (StringUtils.isBlank(memberId)) {
-            throw new GuliException(20001," 请先登录 ");
-        }
         String orderNo = orderService.saveOrderByCourseId(courseId,memberId);
         return Result.success().data("orderNo",orderNo);
     }
@@ -47,6 +44,13 @@ public class OrderController{
     public Result getOrderInfo(@PathVariable String orderNo) {
         Order order = orderService.getOrderInfo(orderNo);
         return Result.success().data("order",order);
+    }
+
+    //3.根据用户ID和课程ID判断是否已购买该课程
+    @GetMapping("isBuyCourse/{courseId}/{menberId}")
+    public boolean isBuyCourse(@PathVariable String courseId,@PathVariable String menberId) {
+        boolean res = orderService.isBuyCourse(courseId,menberId);
+        return res;
     }
 }
 

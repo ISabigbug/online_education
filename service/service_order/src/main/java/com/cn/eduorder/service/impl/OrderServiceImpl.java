@@ -1,5 +1,6 @@
 package com.cn.eduorder.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cn.commonutils.ordervo.Course;
 import com.cn.commonutils.ordervo.Menber;
@@ -60,6 +61,20 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order>
     public Order getOrderInfo(String orderNo) {
         Order order = baseMapper.selectOneByOrderNo(orderNo);
         return order;
+    }
+
+    @Override
+    public boolean isBuyCourse(String courseId, String menberId) {
+        LambdaQueryWrapper<Order> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+        lambdaQueryWrapper.eq(Order::getCourseId,courseId)
+                .eq(Order::getMemberId,menberId)
+                .eq(Order::getStatus,1);
+        Long count = baseMapper.selectCount(lambdaQueryWrapper);
+        if (count > 0) {
+            return true;
+        }else {
+            return false;
+        }
     }
 }
 

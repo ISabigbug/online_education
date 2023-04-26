@@ -15,4 +15,7 @@ public interface OrderService extends IService<Order> {
 
     //2.根据订单号查询订单信息
     Order getOrderInfo(String orderNo);
+
+    //3.根据用户ID和课程ID判断是否已购买该课程
+    boolean isBuyCourse(String courseId, String menberId);
 }

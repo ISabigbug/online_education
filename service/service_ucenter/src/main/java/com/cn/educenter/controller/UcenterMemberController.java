@@ -44,4 +44,11 @@ public class UcenterMemberController {
         Menber menber = ucenterMemberService.getUserInfoById(id);
         return menber;
     }
+
+    //统计某天注册人数
+    @GetMapping("countRegister/{day}")
+    public Integer countRegister(@PathVariable String day) {
+        Integer count = ucenterMemberService.countRegister(day);
+        return count;
+    }
 }
