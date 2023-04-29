@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping({"/eduservice/teacherFront"})
-@CrossOrigin
 public class TeacherFrontController {
     @Autowired
     private EduTeacherService eduTeacherService;

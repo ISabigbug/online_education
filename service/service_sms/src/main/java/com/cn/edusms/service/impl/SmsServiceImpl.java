@@ -17,7 +17,7 @@ public class SmsServiceImpl implements SmsService {
     public boolean send(String phone, String templateCode, HashMap<String, Object> param) {
         try {
             Client client = AliyunSmsSDKUtils.createClient(ConstantPropertiesUtils.ACCESS_KEY_ID, ConstantPropertiesUtils.ACCESS_KEY_SECRET);
-            SendSmsRequest sendSmsRequest = (new SendSmsRequest()).setSignName("阿里云短信测试").setTemplateCode(templateCode).setPhoneNumbers(phone).setTemplateParam(JSONObject.toJSONString(param));
+            SendSmsRequest sendSmsRequest = (new SendSmsRequest()).setSignName("在线教育平台注册").setTemplateCode(templateCode).setPhoneNumbers(phone).setTemplateParam(JSONObject.toJSONString(param));
             RuntimeOptions runtime = new RuntimeOptions();
             SendSmsResponse response = client.sendSmsWithOptions(sendSmsRequest, runtime);
             return response.getBody().getCode().equals("OK");

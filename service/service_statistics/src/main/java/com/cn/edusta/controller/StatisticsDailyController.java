@@ -17,7 +17,6 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/edusta/sta")
-@CrossOrigin
 public class StatisticsDailyController{
     /**
      * 服务对象

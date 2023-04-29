@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping({"/educenter/menmber"})
-@CrossOrigin
 public class UcenterMemberController {
     @Autowired
     private UcenterMemberService ucenterMemberService;

@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping({"/edusms/sms"})
-@CrossOrigin
 public class SmsController {
     @Autowired
     private SmsService smsService;

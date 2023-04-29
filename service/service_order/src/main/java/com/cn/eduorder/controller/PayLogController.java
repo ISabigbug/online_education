@@ -17,7 +17,6 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/eduorder/payLog")
-@CrossOrigin
 @MapperScan("com.cn.eduorder.mapper")
 public class PayLogController{
     /**

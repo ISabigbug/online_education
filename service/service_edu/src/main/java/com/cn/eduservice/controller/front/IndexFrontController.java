@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping({"/eduservice/index"})
-@CrossOrigin
 public class IndexFrontController {
     @Autowired
     private EduTeacherService eduTeacherService;

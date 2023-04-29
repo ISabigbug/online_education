@@ -18,7 +18,6 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/educms/frontbanner")
-@CrossOrigin
 public class CrmBannerFrontController {
     @Autowired
     private CrmBannerService crmBannerService;

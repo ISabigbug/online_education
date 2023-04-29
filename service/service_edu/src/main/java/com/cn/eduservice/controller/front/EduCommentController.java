@@ -18,7 +18,6 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/eduservice/commentFront")
-@CrossOrigin
 public class EduCommentController {
     /**
      * 服务对象

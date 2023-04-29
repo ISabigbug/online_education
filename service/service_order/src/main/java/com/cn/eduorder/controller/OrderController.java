@@ -22,7 +22,6 @@ import javax.servlet.http.HttpServletRequest;
  */
 @RestController
 @RequestMapping("/eduorder/order")
-@CrossOrigin
 @MapperScan("com.cn.eduorder.mapper")
 public class OrderController{
     /**

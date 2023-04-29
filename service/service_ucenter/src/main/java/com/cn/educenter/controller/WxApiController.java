@@ -15,14 +15,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@CrossOrigin
 @RequestMapping({"/api/ucenter/wx"})
 public class WxApiController {
     @Autowired
     private UcenterMemberService ucenterMemberService;
-
-    public WxApiController() {
-    }
 
     @GetMapping({"callback"})
     public String callback(String code, String state) {
