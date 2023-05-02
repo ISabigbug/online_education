@@ -35,7 +35,8 @@ public class RolePermission implements Serializable {
     private String permissionId;
 
     @ApiModelProperty(value = "逻辑删除 1（true）已删除， 0（false）未删除")
-    private Boolean isDeleted;
+    @TableLogic
+    private Integer isDeleted;
 
     @TableField(fill = FieldFill.INSERT)
     @ApiModelProperty(value = "创建时间")
