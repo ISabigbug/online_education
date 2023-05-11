@@ -147,7 +147,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
     @Override
     public List<EduCourse> getCourseByTeacherId(String teacherId) {
         LambdaQueryWrapper<EduCourse> lambdaQueryWrapper = new LambdaQueryWrapper<>();
-        lambdaQueryWrapper.eq(EduCourse::getTeacherId,teacherId).orderByDesc(EduCourse::getGmtModified);
+        lambdaQueryWrapper.eq(EduCourse::getTeacherId, teacherId).orderByDesc(EduCourse::getGmtModified);
         List<EduCourse> courseList = baseMapper.selectList(lambdaQueryWrapper);
         return courseList;
     }
@@ -156,12 +156,13 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
     public Map<String, Object> pageCourseFront(Page<EduCourse> pageCourse, CourseQueryVo courseQueryVo) {
         //根据分页条件查询
         LambdaQueryWrapper<EduCourse> lambdaQueryWrapper = new LambdaQueryWrapper<>();
-        lambdaQueryWrapper.eq(StringUtils.isNotBlank(courseQueryVo.getSubjectParentId()),EduCourse::getSubjectParentId,courseQueryVo.getSubjectParentId())
-                          .eq(StringUtils.isNotBlank(courseQueryVo.getSubjectId()),EduCourse::getSubjectId,courseQueryVo.getSubjectId())
-                          .orderByDesc(StringUtils.isNotBlank(courseQueryVo.getBuyCountSort()),EduCourse::getBuyCount)
-                          .orderByDesc(StringUtils.isNotBlank(courseQueryVo.getGmtCreateSort()),EduCourse::getGmtCreate)
-                          .orderByDesc(StringUtils.isNotBlank(courseQueryVo.getPriceSort()),EduCourse::getPrice);
-        baseMapper.selectPage(pageCourse,lambdaQueryWrapper);
+        lambdaQueryWrapper.eq(StringUtils.isNotBlank(courseQueryVo.getSubjectParentId()), EduCourse::getSubjectParentId, courseQueryVo.getSubjectParentId())
+                .like(StringUtils.isNotBlank(courseQueryVo.getTitle()),EduCourse::getTitle, courseQueryVo.getTitle())
+                .eq(StringUtils.isNotBlank(courseQueryVo.getSubjectId()), EduCourse::getSubjectId, courseQueryVo.getSubjectId())
+                .orderByDesc(StringUtils.isNotBlank(courseQueryVo.getBuyCountSort()), EduCourse::getBuyCount)
+                .orderByDesc(StringUtils.isNotBlank(courseQueryVo.getGmtCreateSort()), EduCourse::getGmtCreate)
+                .orderByDesc(StringUtils.isNotBlank(courseQueryVo.getPriceSort()), EduCourse::getPrice);
+        baseMapper.selectPage(pageCourse, lambdaQueryWrapper);
 
         //将查询结果封装到map中
         List<EduCourse> records = pageCourse.getRecords();
@@ -192,7 +193,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
     public Course getInfoByCid(String cid) {
         EduCourse eduCourse = baseMapper.selectById(cid);
         Course course = new Course();
-        BeanUtils.copyProperties(eduCourse,course);
+        BeanUtils.copyProperties(eduCourse, course);
         return course;
     }
 }
