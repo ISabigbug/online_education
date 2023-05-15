@@ -43,12 +43,12 @@ public class EduChapterServiceImpl extends ServiceImpl<EduChapterMapper, EduChap
         List<EduVideo> eduVideoList = eduVideoService.list(eduVideoLambdaQueryWrapper);
 
         List<Chapter> finalList = new ArrayList<>();
-        //用于封装小节
-        List<Video> videoList = new ArrayList<>();
 
         //遍历所有章节
         for (EduChapter eduChapter : eduChapterList) {
             Chapter chapter = new Chapter();
+            //用于封装小节
+            List<Video> videoList = new ArrayList<>();
             BeanUtils.copyProperties(eduChapter,chapter);
 
             //遍历所有小节

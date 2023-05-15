@@ -1,11 +1,7 @@
 package com.cn.oss.service.impl;
 
-import com.aliyun.oss.ClientException;
 import com.aliyun.oss.OSS;
 import com.aliyun.oss.OSSClientBuilder;
-import com.aliyun.oss.OSSException;
-import com.aliyun.oss.model.PutObjectRequest;
-import com.aliyun.oss.model.PutObjectResult;
 import com.cn.oss.service.OssService;
 import com.cn.oss.utils.ConstantPropertiesUtils;
 import org.joda.time.DateTime;

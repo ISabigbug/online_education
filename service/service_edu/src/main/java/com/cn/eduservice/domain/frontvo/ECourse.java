@@ -1,19 +1,18 @@
-package com.cn.eduservice.domain;
+package com.cn.eduservice.domain.frontvo;
 
 import com.baomidou.mybatisplus.annotation.*;
+import lombok.Data;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
-import lombok.Data;
 
 /**
  * 课程
  * @TableName edu_course
  */
-@TableName(value ="edu_course")
 @Data
-public class EduCourse implements Serializable {
+public class ECourse implements Serializable {
     /**
      * 课程ID
      */
@@ -23,7 +22,7 @@ public class EduCourse implements Serializable {
     /**
      *  评论数量
      **/
-//    private Long CommentNum;
+    private Long commentNum;
 
     /**
      * 课程讲师ID

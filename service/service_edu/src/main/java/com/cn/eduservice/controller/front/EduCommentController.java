@@ -39,5 +39,11 @@ public class EduCommentController {
         eduCommentService.saveComment(eduComment,request);
         return Result.success();
     }
+
+    @GetMapping("commentNum/{cid}")
+    public Result commentNum(@PathVariable String cid) {
+        Long count = eduCommentService.commentNum(cid);
+        return Result.success().data("count",count);
+    }
 }
 

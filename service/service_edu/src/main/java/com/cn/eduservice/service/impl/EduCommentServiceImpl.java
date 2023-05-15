@@ -83,6 +83,14 @@ public class EduCommentServiceImpl extends ServiceImpl<EduCommentMapper, EduComm
             throw new GuliException(20001," 发表评论失败 ");
         }
     }
+
+    @Override
+    public Long commentNum(String cid) {
+        LambdaQueryWrapper<EduComment> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+        lambdaQueryWrapper.eq(StringUtils.isNotBlank(cid),EduComment::getCourseId,cid);
+        Long count = baseMapper.selectCount(lambdaQueryWrapper);
+        return count;
+    }
 }
 
 

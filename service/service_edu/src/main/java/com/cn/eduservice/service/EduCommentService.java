@@ -19,4 +19,7 @@ public interface EduCommentService extends IService<EduComment> {
 
     //2.将评论信息存入数据库
     void saveComment(EduComment eduComment, HttpServletRequest request);
+
+    //3.根据课程id查询评论数量
+    Long commentNum(String cid);
 }

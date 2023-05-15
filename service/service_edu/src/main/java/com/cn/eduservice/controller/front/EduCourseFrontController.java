@@ -12,7 +12,6 @@ import com.cn.eduservice.domain.frontvo.CourseQueryVo;
 import com.cn.eduservice.domain.frontvo.CourseWebVo;
 import com.cn.eduservice.service.EduChapterService;
 import com.cn.eduservice.service.EduCourseService;
-import com.cn.servicebase.exception.GuliException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

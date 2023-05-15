@@ -7,22 +7,20 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cn.commonutils.ordervo.Course;
 import com.cn.eduservice.domain.EduCourse;
 import com.cn.eduservice.domain.EduCourseDescription;
-import com.cn.eduservice.domain.EduTeacher;
 import com.cn.eduservice.domain.frontvo.CourseQueryVo;
 import com.cn.eduservice.domain.frontvo.CourseWebVo;
+import com.cn.eduservice.domain.frontvo.ECourse;
 import com.cn.eduservice.domain.vo.CoursePublishVo;
 import com.cn.eduservice.domain.vo.CourseVo;
-import com.cn.eduservice.service.EduChapterService;
-import com.cn.eduservice.service.EduCourseDescriptionService;
-import com.cn.eduservice.service.EduCourseService;
+import com.cn.eduservice.service.*;
 import com.cn.eduservice.mapper.EduCourseMapper;
-import com.cn.eduservice.service.EduVideoService;
 import com.cn.servicebase.exception.GuliException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,6 +43,9 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
 
     @Autowired
     private EduChapterService eduChapterService;
+
+    @Autowired
+    private EduCommentService eduCommentService;
 
     @Override
     public String saveCourseInfo(CourseVo courseVo) {
@@ -164,8 +165,17 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
                 .orderByDesc(StringUtils.isNotBlank(courseQueryVo.getPriceSort()), EduCourse::getPrice);
         baseMapper.selectPage(pageCourse, lambdaQueryWrapper);
 
+        List<ECourse> courseList = new ArrayList<>();
         //将查询结果封装到map中
         List<EduCourse> records = pageCourse.getRecords();
+        for (EduCourse course : records) {
+            ECourse eCourse = new ECourse();
+            //根据课程ID获取课程评论数据
+            BeanUtils.copyProperties(course,eCourse);
+            Long num = eduCommentService.commentNum(course.getId());
+            eCourse.setCommentNum(num);
+            courseList.add(eCourse);
+        }
         long current = pageCourse.getCurrent();
         long pages = pageCourse.getPages();
         long size = pageCourse.getSize();
@@ -173,7 +183,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         boolean hasNext = pageCourse.hasNext();
         boolean hasPrevious = pageCourse.hasPrevious();
         Map<String, Object> map = new HashMap();
-        map.put("items", records);
+        map.put("items", courseList);
         map.put("current", current);
         map.put("pages", pages);
         map.put("size", size);
