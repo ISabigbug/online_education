@@ -1,7 +1,9 @@
 package com.cn.eduservice.domain.vo;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
@@ -11,6 +13,8 @@ import java.math.BigDecimal;
  * @Description:
  */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class CourseVo {
     @ApiModelProperty(value = "课程ID")
     private String id;
