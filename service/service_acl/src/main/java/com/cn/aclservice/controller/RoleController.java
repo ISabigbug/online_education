@@ -45,8 +45,8 @@ public class RoleController {
         if(!StringUtils.isEmpty(role.getRoleName())) {
             wrapper.like("role_name",role.getRoleName());
         }
-        roleService.page(pageParam,wrapper);
-        return Result.success().data("items", pageParam.getRecords()).data("total", pageParam.getTotal());
+        roleService.page(pageParam, wrapper);
+        return Result.success().data("items", pageParam.getRecords()).data("total", pageParam.getRecords().size());
     }
 
     @ApiOperation(value = "获取角色")

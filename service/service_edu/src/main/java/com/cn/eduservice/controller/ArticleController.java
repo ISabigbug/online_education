@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/eduservice/article")
 public class ArticleController {
-//    @Autowired
-//    private ArticleService articleService;
+    @Autowired
+    private ArticleService articleService;
 //    @PreAuthorize("@ps.hasPermission('content:article:writer')")
 //    @PostMapping
 //    public ResponseResult add(@RequestBody AddArticleDto articleDto){

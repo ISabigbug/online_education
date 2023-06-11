@@ -55,7 +55,7 @@ public class UserController {
         }
 
         IPage<User> pageModel = userService.page(pageParam, wrapper);
-        return Result.success().data("items", pageModel.getRecords()).data("total", pageModel.getTotal());
+        return Result.success().data("items", pageModel.getRecords()).data("total", pageModel.getRecords().size());
     }
 
     @ApiOperation(value = "获取角色")

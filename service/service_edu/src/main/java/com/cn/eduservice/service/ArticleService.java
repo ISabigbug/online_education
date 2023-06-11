@@ -18,20 +18,4 @@ public interface ArticleService extends IService<Article> {
     //1.前台分页查询文章
     Map<String, Object> pageArticleFront(Page<Article> pageArticle, ArticleQuery articleQuery);
 
-//    Result articleList(Integer pageNum, Integer pageSize);
-
-//    ArticleDetailVo getArticleDetail(Long id);
-//    ArticleDetailVo queryWithLogicExpire(Long id);
-//
-//    ResponseResult updateViewCount(Long id);
-//
-//    ResponseResult add(AddArticleDto articleDto);
-//
-//    ResponseResult listArticle(ListArticleDto listArticleDto);
-//
-//    ArticleDetailAdminVo queryArticleById(Long id);
-//
-//    void updateArticle(ArticleDetailAdminDto articleDetailAdminDto);
-
-//    void deleteById(Long id);
 }
