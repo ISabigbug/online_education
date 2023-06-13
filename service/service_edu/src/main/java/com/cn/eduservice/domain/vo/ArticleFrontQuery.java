@@ -8,9 +8,9 @@ import lombok.Data;
  * @Description:
  */
 @Data
-public class ArticleQuery {
+public class ArticleFrontQuery {
     //标题
     private String title;
-    //状态（0已发布，1草稿）
-    private String status;
+    //所属分类名称
+    private String categoryName;
 }

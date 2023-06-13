@@ -17,7 +17,7 @@ public class GlobalExceptionhandler {
     @ResponseBody
     public Result error(Exception e){
         e.printStackTrace();
-        return Result.error().message("执行了全局异常处理");
+        return Result.error().message("出现未知异常，请联系管理员处理");
     }
 
     @ExceptionHandler(ArithmeticException.class)

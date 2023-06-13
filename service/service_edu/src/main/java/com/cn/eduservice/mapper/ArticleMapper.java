@@ -13,6 +13,5 @@ import org.apache.ibatis.annotations.Update;
  */
 @Mapper
 public interface ArticleMapper extends BaseMapper<Article> {
-    @Update("update k_article set del_flag = 1 where id = #{id}")
-    void deleteById(@Param("id") Long id);
+
 }

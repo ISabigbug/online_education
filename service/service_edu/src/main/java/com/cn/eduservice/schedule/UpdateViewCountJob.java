@@ -31,7 +31,7 @@ public class UpdateViewCountJob {
 
         List<Article> articleList = cacheMap.entrySet()
                 .stream()
-                .map(stringIntegerEntry -> new Article(Long.valueOf(stringIntegerEntry.getKey()), stringIntegerEntry.getValue().longValue()))
+                .map(stringIntegerEntry -> new Article(stringIntegerEntry.getKey(), stringIntegerEntry.getValue().longValue()))
                 .collect(Collectors.toList());
         //更新到数据库中
         articleService.updateBatchById(articleList);

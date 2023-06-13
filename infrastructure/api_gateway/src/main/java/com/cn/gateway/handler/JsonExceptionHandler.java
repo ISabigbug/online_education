@@ -34,7 +34,7 @@ public class JsonExceptionHandler extends DefaultErrorWebExceptionHandler {
         Map<String, Object> map = new HashMap<>();
         map.put("success", false);
         map.put("code", 20005);
-        map.put("message", "网关失败");
+        map.put("message", "网关出现异常，请联系管理员处理");
         map.put("data", null);
         return map;
     }
