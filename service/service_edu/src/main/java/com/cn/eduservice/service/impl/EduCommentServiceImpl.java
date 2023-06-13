@@ -10,7 +10,7 @@ import com.cn.eduservice.client.UcenterClient;
 import com.cn.eduservice.domain.EduComment;
 import com.cn.eduservice.service.EduCommentService;
 import com.cn.eduservice.mapper.EduCommentMapper;
-import com.cn.servicebase.exception.GuliException;
+import com.cn.servicebase.exception.MyException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -60,12 +60,12 @@ public class EduCommentServiceImpl extends ServiceImpl<EduCommentMapper, EduComm
         String memberId = JwtUtils.getMemberIdByJwtToken(request);
         //判断用户是否登录
         if (StringUtils.isBlank(memberId)) {
-            throw new GuliException(20001," 请先登录 ");
+            throw new MyException(20001," 请先登录 ");
         }
 
         //判断用户是否输入内容
         if (StringUtils.isBlank(eduComment.getContent())) {
-            throw new GuliException(20001," 请先输入内容 ");
+            throw new MyException(20001," 请先输入内容 ");
         }
 
         //通过用户ID获取详细用户信息
@@ -80,7 +80,7 @@ public class EduCommentServiceImpl extends ServiceImpl<EduCommentMapper, EduComm
         int insert = baseMapper.insert(eduComment);
 
         if (insert == 0) {
-            throw new GuliException(20001," 发表评论失败 ");
+            throw new MyException(20001," 发表评论失败 ");
         }
     }
 

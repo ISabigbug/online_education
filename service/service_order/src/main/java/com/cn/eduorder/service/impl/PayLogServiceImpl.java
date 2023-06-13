@@ -10,7 +10,7 @@ import com.cn.eduorder.service.PayLogService;
 import com.cn.eduorder.mapper.PayLogMapper;
 import com.cn.eduorder.utils.ConstantPropertiesUtil;
 import com.cn.eduorder.utils.HttpClient;
-import com.cn.servicebase.exception.GuliException;
+import com.cn.servicebase.exception.MyException;
 import com.github.wxpay.sdk.WXPayUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -75,7 +75,7 @@ public class PayLogServiceImpl extends ServiceImpl<PayLogMapper, PayLog>
             //redisTemplate.opsForValue().set(orderNo, map, 120, TimeUnit.MINUTES);
             return map;
         } catch (Exception e) {
-            throw new GuliException(20001, " 生成二维码失败 ");
+            throw new MyException(20001, " 生成二维码失败 ");
         }
     }
 

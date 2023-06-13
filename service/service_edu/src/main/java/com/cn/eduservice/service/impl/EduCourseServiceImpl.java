@@ -14,7 +14,7 @@ import com.cn.eduservice.domain.vo.CoursePublishVo;
 import com.cn.eduservice.domain.vo.CourseVo;
 import com.cn.eduservice.service.*;
 import com.cn.eduservice.mapper.EduCourseMapper;
-import com.cn.servicebase.exception.GuliException;
+import com.cn.servicebase.exception.MyException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -54,7 +54,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         BeanUtils.copyProperties(courseVo, eduCourse);
         int insert = baseMapper.insert(eduCourse);
         if (insert == 0) {
-            throw new GuliException(20001, "添加课程信息失败");
+            throw new MyException(20001, "添加课程信息失败");
         } else {
             //获取课程id
             String cid = eduCourse.getId();
@@ -89,7 +89,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         int update = baseMapper.updateById(eduCourse);
 
         if (update == 0) {
-            throw new GuliException(20001, "修改课程信息失败");
+            throw new MyException(20001, "修改课程信息失败");
         }
 
         //修改课程简历表
@@ -98,7 +98,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         eduCourseDescription.setDescription(courseVo.getDescription());
         boolean res = eduCourseDescriptionService.updateById(eduCourseDescription);
         if (!res) {
-            throw new GuliException(20001, "修改课程简历失败");
+            throw new MyException(20001, "修改课程简历失败");
         }
     }
 
@@ -129,7 +129,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         //删除课程本身
         int deleteCourse = baseMapper.deleteById(cid);
         if (deleteCourse == 0) {
-            throw new GuliException(20001, "删除课程失败");
+            throw new MyException(20001, "删除课程失败");
         }
     }
 

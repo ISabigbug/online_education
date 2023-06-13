@@ -2,7 +2,7 @@ package com.cn.eduorder.controller;
 
 import com.cn.commonutils.Result;
 import com.cn.eduorder.service.PayLogService;
-import com.cn.servicebase.exception.GuliException;
+import com.cn.servicebase.exception.MyException;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -37,7 +37,7 @@ public class PayLogController{
     public Result getPayStatus(@PathVariable String orderNo) {
         Map<String,String> map = payLogService.getPayStatus(orderNo);
         if (map == null) {
-            throw new GuliException(20001," 支付失败 ");
+            throw new MyException(20001," 支付失败 ");
         }
 
         //如果返回的map不为空，通过map获取订单状态

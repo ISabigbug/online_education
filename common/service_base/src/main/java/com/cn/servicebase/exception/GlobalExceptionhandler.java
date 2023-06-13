@@ -29,9 +29,9 @@ public class GlobalExceptionhandler {
         return Result.error().message("执行了ArithmeticException异常处理");
     }
 
-    @ExceptionHandler(GuliException.class)
+    @ExceptionHandler(MyException.class)
     @ResponseBody
-    public Result error(GuliException e){
+    public Result error(MyException e){
         e.printStackTrace();
         return Result.error().code(e.getCode()).message(e.getMsg());
     }

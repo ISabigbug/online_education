@@ -37,7 +37,7 @@ public class CrmBanner implements Serializable {
     /**
      * 排序
      */
-    private Object sort;
+    private Integer sort;
 
     /**
      * 逻辑删除 1（true）已删除， 0（false）未删除
@@ -48,11 +48,13 @@ public class CrmBanner implements Serializable {
     /**
      * 创建时间
      */
+    @TableField(fill = FieldFill.INSERT)
     private Date gmtCreate;
 
     /**
      * 更新时间
      */
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date gmtModified;
 
     @TableField(exist = false)

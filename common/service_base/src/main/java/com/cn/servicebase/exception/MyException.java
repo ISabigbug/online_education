@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class GuliException extends RuntimeException {
+public class MyException extends RuntimeException {
     private Integer code;//状态码
     private String msg;//输出信息
 }

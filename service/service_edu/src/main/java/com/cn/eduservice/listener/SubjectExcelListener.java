@@ -3,11 +3,10 @@ package com.cn.eduservice.listener;
 import com.alibaba.excel.context.AnalysisContext;
 import com.alibaba.excel.event.AnalysisEventListener;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.cn.eduservice.domain.EduSubject;
 import com.cn.eduservice.domain.excel.SubjectData;
 import com.cn.eduservice.service.EduSubjectService;
-import com.cn.servicebase.exception.GuliException;
+import com.cn.servicebase.exception.MyException;
 
 
 /**
@@ -30,7 +29,7 @@ public class SubjectExcelListener extends AnalysisEventListener<SubjectData> {
     @Override
     public void invoke(SubjectData subjectData, AnalysisContext analysisContext) {
         if (subjectData == null) {
-            throw new GuliException(20001,"文件数据为空");
+            throw new MyException(20001,"文件数据为空");
         }
 
         //添加一级分类

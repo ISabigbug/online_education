@@ -2,10 +2,7 @@ package com.cn.security.config;
 
 import com.cn.security.filter.TokenAuthenticationFilter;
 import com.cn.security.filter.TokenLoginFilter;
-import com.cn.security.security.DefaultPasswordEncoder;
-import com.cn.security.security.TokenLogoutHandler;
-import com.cn.security.security.TokenManager;
-import com.cn.security.security.UnauthorizedEntryPoint;
+import com.cn.security.security.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -16,13 +13,11 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.web.session.SessionManagementFilter;
 
 /**
  * <p>
  * Security配置类
  * </p>
- *
  */
 @Configuration
 @EnableWebSecurity
@@ -56,10 +51,22 @@ public class TokenWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .anyRequest().authenticated()
                 .and().logout().logoutUrl("/admin/acl/index/logout")
-                .addLogoutHandler(new TokenLogoutHandler(tokenManager,redisTemplate)).and()
+                .addLogoutHandler(new TokenLogoutHandler(tokenManager, redisTemplate)).and()
                 .addFilter(new TokenLoginFilter(authenticationManager(), tokenManager, redisTemplate))
                 .addFilter(new TokenAuthenticationFilter(authenticationManager(), tokenManager, redisTemplate)).httpBasic();
+//        http.sessionManagement()
+//                //最大登陆人数为1
+//                .maximumSessions(1)
+//                //设置false允许多点登录但是，如果超出最大人数之前的登录会被踢掉
+//                .maxSessionsPreventsLogin(false)
+//                .expiredSessionStrategy(myExpiredSessionStrategy);
     }
+
+    // 对并发session进行管理
+//    @Bean
+//    public HttpSessionEventPublisher httpSessionEventPublisher() {
+//        return new HttpSessionEventPublisher();
+//    }
 
     /**
      * 密码处理
@@ -80,6 +87,6 @@ public class TokenWebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers("/api/**",
                 "/swagger-resources/**", "/webjars/**", "/v2/**", "/swagger-ui.html/**"
-               );
+        );
     }
 }

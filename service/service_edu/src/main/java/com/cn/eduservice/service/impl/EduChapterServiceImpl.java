@@ -10,7 +10,7 @@ import com.cn.eduservice.domain.chapter.Video;
 import com.cn.eduservice.service.EduChapterService;
 import com.cn.eduservice.mapper.EduChapterMapper;
 import com.cn.eduservice.service.EduVideoService;
-import com.cn.servicebase.exception.GuliException;
+import com.cn.servicebase.exception.MyException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -72,7 +72,7 @@ public class EduChapterServiceImpl extends ServiceImpl<EduChapterMapper, EduChap
         lambdaQueryWrapper.eq(StringUtils.isNotBlank(chapterId),EduVideo::getChapterId,chapterId);
         long count = eduVideoService.count(lambdaQueryWrapper);
         if (count > 0) {
-            throw new GuliException(20001,"删除失败！ 请先删除该章节下的小节");
+            throw new MyException(20001,"删除失败！ 请先删除该章节下的小节");
         } else {
             int i = baseMapper.deleteById(chapterId);
             return i > 0;
