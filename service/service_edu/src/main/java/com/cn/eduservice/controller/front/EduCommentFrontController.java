@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cn.commonutils.Result;
 import com.cn.eduservice.domain.EduComment;
 import com.cn.eduservice.service.EduCommentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -18,11 +19,11 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/eduservice/commentFront")
-public class EduCommentController {
+public class EduCommentFrontController {
     /**
      * 服务对象
      */
-    @Resource
+    @Autowired
     private EduCommentService eduCommentService;
 
     //1.分页显示所有评论信息

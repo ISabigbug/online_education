@@ -7,14 +7,21 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cn.commonutils.JwtUtils;
 import com.cn.commonutils.ordervo.Menber;
 import com.cn.eduservice.client.UcenterClient;
+import com.cn.eduservice.domain.Article;
 import com.cn.eduservice.domain.EduComment;
+import com.cn.eduservice.domain.EduCourse;
+import com.cn.eduservice.domain.vo.CommentQuery;
+import com.cn.eduservice.domain.vo.CommentVo;
 import com.cn.eduservice.service.EduCommentService;
 import com.cn.eduservice.mapper.EduCommentMapper;
+import com.cn.eduservice.service.EduCourseService;
 import com.cn.servicebase.exception.MyException;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,6 +37,9 @@ public class EduCommentServiceImpl extends ServiceImpl<EduCommentMapper, EduComm
 
     @Autowired
     private UcenterClient ucenterClient;
+
+    @Autowired
+    private EduCourseService eduCourseService;
 
     @Override
     public Map<String, Object> pageCourseFront(Page<EduComment> pageComment,String courseId) {
@@ -90,6 +100,47 @@ public class EduCommentServiceImpl extends ServiceImpl<EduCommentMapper, EduComm
         lambdaQueryWrapper.eq(StringUtils.isNotBlank(cid),EduComment::getCourseId,cid);
         Long count = baseMapper.selectCount(lambdaQueryWrapper);
         return count;
+    }
+
+    //后台分页查询数据
+    @Override
+    public Map<String, Object> pageCourse(Page<EduComment> pageComment, CommentQuery commentQuery) {
+        //根据分页条件查询
+        LambdaQueryWrapper<EduComment> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+        lambdaQueryWrapper.eq(StringUtils.isNotBlank(commentQuery.getCourseId()), EduComment::getCourseId, commentQuery.getCourseId())
+                .like(StringUtils.isNotBlank(commentQuery.getNickname()), EduComment::getNickname, commentQuery.getNickname())
+                .like(StringUtils.isNotBlank(commentQuery.getContent()), EduComment::getContent, commentQuery.getContent())
+                .orderByDesc(EduComment::getGmtCreate);
+        baseMapper.selectPage(pageComment, lambdaQueryWrapper);
+        //将查询结果封装到map中
+        List<EduComment> commentList = pageComment.getRecords();
+        //新建List存入传给前端的数据
+        List<CommentVo> commentVoList = new ArrayList<>();
+        for (EduComment eduComment : commentList) {
+            CommentVo commentVo = new CommentVo();
+            BeanUtils.copyProperties(eduComment,commentVo);
+            EduCourse course = eduCourseService.getById(eduComment.getCourseId());
+            commentVo.setCourseTitle(course.getTitle());
+            commentVoList.add(commentVo);
+        }
+        //获取课程列表
+        List<EduCourse> courseList = eduCourseService.list();
+        long current = pageComment.getCurrent();
+        long pages = pageComment.getPages();
+        long size = pageComment.getSize();
+        long total = pageComment.getTotal();
+        boolean hasNext = pageComment.hasNext();
+        boolean hasPrevious = pageComment.hasPrevious();
+        Map<String, Object> map = new HashMap();
+        map.put("records", commentVoList);
+        map.put("current", current);
+        map.put("pages", pages);
+        map.put("size", size);
+        map.put("total", total);
+        map.put("hasNext", hasNext);
+        map.put("hasPrevious", hasPrevious);
+        map.put("courseList",courseList);
+        return map;
     }
 }
 

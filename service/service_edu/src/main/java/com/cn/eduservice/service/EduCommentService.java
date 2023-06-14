@@ -3,6 +3,7 @@ package com.cn.eduservice.service;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cn.eduservice.domain.EduComment;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.cn.eduservice.domain.vo.CommentQuery;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
@@ -22,4 +23,7 @@ public interface EduCommentService extends IService<EduComment> {
 
     //3.根据课程id查询评论数量
     Long commentNum(String cid);
+
+    //4.后台分页查询所有评论
+    Map<String, Object> pageCourse(Page<EduComment> pageComment, CommentQuery commentQuery);
 }
