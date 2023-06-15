@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
  * @Description:
  */
 @ControllerAdvice
-@Slf4j
 public class GlobalExceptionhandler {
 
     @ExceptionHandler(Exception.class)
@@ -24,7 +23,7 @@ public class GlobalExceptionhandler {
     @ResponseBody
     public Result error(ArithmeticException e){
         //将错误信息存入日志
-        log.error(e.getMessage());
+//        log.error(e.getMessage());
         e.printStackTrace();
         return Result.error().message("执行了ArithmeticException异常处理");
     }
