@@ -31,7 +31,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         LambdaQueryWrapper<Article> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         lambdaQueryWrapper.like(StringUtils.isNotBlank(articleQuery.getTitle()), Article::getTitle, articleQuery.getTitle())
                 .like(StringUtils.isNotBlank(articleQuery.getCategoryName()), Article::getCategoryName, articleQuery.getCategoryName())
-                .orderByAsc(Article::getIsTop);
+                .orderByAsc(Article::getIsTop).orderByDesc(Article::getGmtCreate);;
         baseMapper.selectPage(pageArticle, lambdaQueryWrapper);
         List<Article> articleList = pageArticle.getRecords();
         for (Article article : articleList) {
