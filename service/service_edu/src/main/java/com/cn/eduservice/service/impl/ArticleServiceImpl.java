@@ -31,12 +31,15 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         LambdaQueryWrapper<Article> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         lambdaQueryWrapper.like(StringUtils.isNotBlank(articleQuery.getTitle()), Article::getTitle, articleQuery.getTitle())
                 .like(StringUtils.isNotBlank(articleQuery.getCategoryName()), Article::getCategoryName, articleQuery.getCategoryName())
-                .orderByDesc(Article::getIsTop);
+                .orderByAsc(Article::getIsTop);
         baseMapper.selectPage(pageArticle, lambdaQueryWrapper);
         List<Article> articleList = pageArticle.getRecords();
         for (Article article : articleList) {
             //从redis获得viewCount
             Integer viewCount = redisCache.getCacheMapValue("article:viewCount", article.getId().toString());
+            if (viewCount == null) {
+                viewCount = 0;
+            }
             article.setViewCount(viewCount.longValue());
         }
         //将查询结果封装到map中
