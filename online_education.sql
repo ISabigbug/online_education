@@ -506,7 +506,7 @@ CREATE TABLE `acl_user` (
 -- ----------------------------
 -- Records of acl_user
 -- ----------------------------
-INSERT INTO `acl_user` VALUES ('1', 'admin', '710f5ad0401c6933ffb8325722b33d05', 'admin', '', null, '0', '2023-06-11 10:39:47', '2023-06-11 10:39:47');
+INSERT INTO `acl_user` VALUES ('1', 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'admin', '', null, '0', '2023-06-11 10:39:47', '2023-06-11 10:39:47');
 INSERT INTO `acl_user` VALUES ('1296657852869406722', 'chasel', '96e79218965eb72c92a549dd5a330112', '蓝墩墩', null, null, '0', '2023-06-11 11:58:18', '2023-06-11 20:34:02');
 INSERT INTO `acl_user` VALUES ('1296658810076688386', 'tuan', '96e79218965eb72c92a549dd5a330112', '团子', null, null, '0', '2023-06-11 12:02:06', '2023-06-11 20:34:31');
 INSERT INTO `acl_user` VALUES ('1651911305764278274', 'root', '7f450aee19bb993eec34ca82ea051a01', '蓝', null, null, '1', '2023-04-28 19:28:41', '2023-05-02 10:52:33');
