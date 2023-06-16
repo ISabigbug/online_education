@@ -87,7 +87,7 @@
 
 **以下为前台用户系统部分页面效果图**
 
-
+![image](https://github.com/ISabigbug/online_education/assets/121659902/edc77daa-9f46-4dcf-907f-120b3e4ec50b)
 
 **以下为后端管理系统部分页面效果图**
 
