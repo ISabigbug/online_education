@@ -81,7 +81,7 @@
 
 ## 效果图
 
-首页参考自https://github.com/woziji2200/ProfilePage
+**首页参考自https://github.com/woziji2200/ProfilePage**
 
 ![image](https://github.com/ISabigbug/online_education/assets/121659902/116fbc0c-f724-493c-b0d5-ddd54bec1d43)
 
