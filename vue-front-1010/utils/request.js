@@ -4,8 +4,7 @@ import cookie from 'js-cookie'
 
 // 创建axios实例
 const service = axios.create({
-    baseURL: 'http://124.223.161.242:9002', // api的base_url
-    // baseURL: 'http://127.0.0.1:9002',
+    baseURL: 'http://###.###.###.###:####', // api的base_url
     timeout: 20000 // 请求超时时间
 })
 
