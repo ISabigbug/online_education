@@ -79,3 +79,15 @@
 
 ![image](https://github.com/ISabigbug/online_education/assets/121659902/46bee9a6-ce41-4af1-9f98-e8883027c446)
 
+## 效果图
+
+**首页**
+此首页参考自https://github.com/woziji2200/ProfilePage
+
+![image](https://github.com/ISabigbug/online_education/assets/121659902/116fbc0c-f724-493c-b0d5-ddd54bec1d43)
+
+**以下为前台用户系统部分页面效果图**
+
+
+
+**以下为后端管理系统部分页面效果图**
