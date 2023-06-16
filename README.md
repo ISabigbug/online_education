@@ -89,6 +89,8 @@
 
 ![image](https://github.com/ISabigbug/online_education/assets/121659902/edc77daa-9f46-4dcf-907f-120b3e4ec50b)
 
+![image](https://github.com/ISabigbug/online_education/assets/121659902/e8b4d164-e489-4a55-b500-d7abda2a722e)
+
 **以下为后端管理系统部分页面效果图**
 
 ![image](https://github.com/ISabigbug/online_education/assets/121659902/0af812b6-7e11-4ca3-8bf5-909bcefdf5a8)
