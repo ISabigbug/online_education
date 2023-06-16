@@ -91,4 +91,4 @@
 
 **以下为后端管理系统部分页面效果图**
 
-![image](https://github.com/ISabigbug/online_education/assets/121659902/7022a5b0-d408-4280-9db2-84308b8f4bb6)
+![image](https://github.com/ISabigbug/online_education/assets/121659902/0af812b6-7e11-4ca3-8bf5-909bcefdf5a8)
