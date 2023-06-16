@@ -18,7 +18,7 @@
 
 后端技术 : SpringBoot + SpringClound + MybatisPlus + SpringSecurity + Jwt + OAuth2 + Redis + Nginx + Maven + EasyExcel + OpenFeign
 
-第三方技术 : 阿里云OSS + 阿里云VOD + 阿里云 SMS + 微信支付和登录 + Git + pm2（服务器）
+第三方技术 : 阿里云OSS + 阿里云VOD + 阿里云 SMS + 微信支付和登录 + Git
 
 ## 前端启动注意事项
 
@@ -67,7 +67,7 @@
 ![image](https://github.com/ISabigbug/online_education/assets/121659902/73a040e0-2225-45f3-ab02-85e736b7135e)
 ![image](https://github.com/ISabigbug/online_education/assets/121659902/14e1e8ac-dd23-4bc4-80d8-ede9354ec2af)
 
-3、终端执行**npm run build**，**Nuxt**后续部署可参考博客https://blog.csdn.net/qq_33323469/article/details/122080623?spm=1001.2014.3001.5506
+3、终端执行**npm run build**，**Nuxt**后续部署(服务器需下载pm2)可参考博客https://blog.csdn.net/qq_33323469/article/details/122080623?spm=1001.2014.3001.5506
 
 ### 三、微服务代码打包（后端）
 
