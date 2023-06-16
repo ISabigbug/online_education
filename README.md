@@ -62,7 +62,7 @@
 
 ![image](https://github.com/ISabigbug/online_education/assets/121659902/5479a2f2-2285-4d86-a557-b6339c4af87f)
 
-2、需到**pages**下的**login.vue**文件和**layouts**下的**default.vue**文件中把**cookie**的作用域（**domain**）改为自己的主机号
+2、将到**pages**下的**login.vue**文件和**layouts**下的**default.vue**文件中把**cookie**的作用域（**domain**）改为自己的主机号
 
 ![image](https://github.com/ISabigbug/online_education/assets/121659902/73a040e0-2225-45f3-ab02-85e736b7135e)
 ![image](https://github.com/ISabigbug/online_education/assets/121659902/14e1e8ac-dd23-4bc4-80d8-ede9354ec2af)
