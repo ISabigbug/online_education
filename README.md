@@ -34,8 +34,7 @@
 
 执行npm install后，需到**pages**下的**login.vue**文件和**layouts**下的**default.vue**文件中把cookie的作用域（domain）改为自己的主机号，然后执行npm run dev即可。账号 : 11111111111 密码 : 123456
 
-![image-20230616105020722](C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230616105020722.png)
-
+![image](https://github.com/ISabigbug/online_education/assets/121659902/b9d2166d-4d4b-4d70-a7fd-fdc66c1efa97)
 ![image-20230616105032551](C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230616105032551.png)
 
 ## 部署打包注意事项
