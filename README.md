@@ -26,13 +26,13 @@
 
 **dev环境**
 
-执行npm install后，需将config包下的index.js文件里面的assetsPublicPath: '**./**'都改为assetsPublicPath: '**/**'，然后执行npm run dev即可。账号 : admin 密码 : 123456
+执行**npm install**后，需将**config**包下的**index.js**文件里面的assetsPublicPath: '**./**'都改为assetsPublicPath: '**/**'，然后执行npm run dev即可。账号 : admin 密码 : 123456
 
 ### 二、前台用户系统
 
 **dev环境**
 
-执行npm install后，需到**pages**下的**login.vue**文件和**layouts**下的**default.vue**文件中把cookie的作用域（domain）改为自己的主机号，然后执行npm run dev即可。账号 : 11111111111 密码 : 123456
+执行npm install后，需到**pages**下的**login.vue**文件和**layouts**下的**default.vue**文件中把**cookie**的作用域（**domain**）改为自己的主机号，然后执行npm run dev即可。账号 : 11111111111 密码 : 123456
 
 ![image](https://github.com/ISabigbug/online_education/assets/121659902/73a040e0-2225-45f3-ab02-85e736b7135e)
 
@@ -62,7 +62,7 @@
 
 ![image](https://github.com/ISabigbug/online_education/assets/121659902/5479a2f2-2285-4d86-a557-b6339c4af87f)
 
-2、需到**pages**下的**login.vue**文件和**layouts**下的**default.vue**文件中把cookie的作用域（domain）改为自己的主机号
+2、需到**pages**下的**login.vue**文件和**layouts**下的**default.vue**文件中把**cookie**的作用域（**domain**）改为自己的主机号
 
 ![image](https://github.com/ISabigbug/online_education/assets/121659902/73a040e0-2225-45f3-ab02-85e736b7135e)
 ![image](https://github.com/ISabigbug/online_education/assets/121659902/14e1e8ac-dd23-4bc4-80d8-ede9354ec2af)
