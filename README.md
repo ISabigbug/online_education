@@ -10,7 +10,7 @@
 - Maven 3.8
 - IntelliJ IDEA 2022.2(可选)
 - Node 16.18
-- Nacos **1.1.4**
+- Nacos 1.1.4
 
 ## 开发技术
 
