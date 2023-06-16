@@ -75,7 +75,7 @@
 
 ![image](https://github.com/ISabigbug/online_education/assets/121659902/408d236e-4f0a-4ee0-badd-fb15e9d8f0af)
 
-2、然后在各个父工程（common、infrastructure、service）下执行**install package**（顺序不可互调），各个jar包即可打包成功
+2、然后在各个父工程（**common、infrastructure、service**）下执行**install package**（顺序不可互调），各个jar包即可打包成功
 
 ![image](https://github.com/ISabigbug/online_education/assets/121659902/46bee9a6-ce41-4af1-9f98-e8883027c446)
 
