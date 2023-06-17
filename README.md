@@ -19,7 +19,7 @@
 
 后端技术 : SpringBoot + SpringClound + MybatisPlus + SpringSecurity + Jwt + OAuth2 + Redis + Nginx + Maven + EasyExcel + OpenFeign
 
-第三方技术 : 阿里云OSS + 阿里云VOD + 阿里云 SMS + 微信支付和登录 + Git
+其它技术 : 阿里云OSS + 阿里云VOD + 阿里云 SMS + 微信支付和登录 + Git
 
 ## 前端启动注意事项
 
