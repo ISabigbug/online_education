@@ -15,7 +15,7 @@
 
 ## 开发技术
 
-前端技术 : Vue + Nuxt + Element-ui + Nodejs + Axios + Echarts + es6
+前端技术 : Vue + Nuxt + Element-ui + Nodejs + Axios + Echarts + ES6 + Babel
 
 后端技术 : SpringBoot + SpringClound + MybatisPlus + SpringSecurity + Jwt + OAuth2 + Redis + Nginx + Maven + EasyExcel + OpenFeign
 
