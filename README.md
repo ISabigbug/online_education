@@ -4,11 +4,12 @@
 
 ## 开发环境
 
+- IntelliJ IDEA 2022.2(可选)
+- Visual Studio Code 2022(可选)
 - MySQL 8.0
 - Redis 6.0
 - JDK 8
 - Maven 3.8
-- IntelliJ IDEA 2022.2(可选)
 - Node 16.18
 - Nacos 1.1.4
 
