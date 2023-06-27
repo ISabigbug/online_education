@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.eduservice.mapper.EduCourseMapper">
+
+    <resultMap id="BaseResultMap" type="com.cn.eduservice.domain.EduCourse">
+        <id property="id" column="id" jdbcType="CHAR"/>
+        <result property="teacherId" column="teacher_id" jdbcType="CHAR"/>
+        <result property="subjectId" column="subject_id" jdbcType="CHAR"/>
+        <result property="subjectParentId" column="subject_parent_id" jdbcType="VARCHAR"/>
+        <result property="title" column="title" jdbcType="VARCHAR"/>
+        <result property="price" column="price" jdbcType="DECIMAL"/>
+        <result property="lessonNum" column="lesson_num" jdbcType="OTHER"/>
+        <result property="cover" column="cover" jdbcType="VARCHAR"/>
+        <result property="buyCount" column="buy_count" jdbcType="BIGINT"/>
+        <result property="viewCount" column="view_count" jdbcType="BIGINT"/>
+        <result property="version" column="version" jdbcType="BIGINT"/>
+        <result property="status" column="status" jdbcType="VARCHAR"/>
+        <result property="isDeleted" column="is_deleted" jdbcType="TINYINT"/>
+        <result property="gmtCreate" column="gmt_create" jdbcType="TIMESTAMP"/>
+        <result property="gmtModified" column="gmt_modified" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id
+        ,teacher_id,subject_id,
+        subject_parent_id,title,price,
+        lesson_num,cover,buy_count,
+        view_count,version,status,
+        is_deleted,gmt_create,gmt_modified
+    </sql>
+
+    <select id="findCoursePublishVo" resultType="com.cn.eduservice.domain.vo.CoursePublishVo">
+        SELECT c.title,
+               c.cover,
+               c.lesson_num                     AS lessonNum,
+               CONVERT(c.price, DECIMAL (8, 2)) AS price,
+               s1.title                         AS subjectLevelOne,
+               s2.title                         AS subjectLevelTwo,
+               t.name                           AS teacherName
+        FROM edu_course c
+                 LEFT JOIN edu_teacher t ON c.teacher_id = t.id
+                 LEFT JOIN edu_subject s1 ON c.subject_parent_id = s1.id
+                 LEFT JOIN edu_subject s2 ON c.subject_id = s2.id
+        WHERE c.id = #{cid}
+    </select>
+    <update id="updateStatusById">
+        update edu_course
+        set status = #{status,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+
+    <select id="getcourseWebVo" resultType="com.cn.eduservice.domain.frontvo.CourseWebVo">
+        SELECT c.id,
+               c.title,
+               c.cover,
+               CONVERT(c.price, DECIMAL (8, 2)) AS price,
+               c.lesson_num                     AS lessonNum,
+               c.cover,
+               c.buy_count                      AS buyCount,
+               c.view_count                     AS viewCount,
+               cd.description,
+
+               t.id                             AS teacherId,
+               t.name                           AS teacherName,
+               t.intro,
+               t.avatar,
+
+               s1.id                            AS subjectLevelOneId,
+               s1.title                         AS subjectLevelOne,
+               s2.id                            AS subjectLevelTwoId,
+               s2.title                         AS subjectLevelTwo
+
+        FROM edu_course c
+                 LEFT JOIN edu_course_description cd ON c.id = cd.id
+                 LEFT JOIN edu_teacher t ON c.teacher_id = t.id
+                 LEFT JOIN edu_subject s1 ON c.subject_parent_id = s1.id
+                 LEFT JOIN edu_subject s2 ON c.subject_id = s2.id
+        WHERE c.id = #{cid}
+    </select>
+</mapper>

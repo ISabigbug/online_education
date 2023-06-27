@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.edusta.mapper.StatisticsDailyMapper">
+
+    <resultMap id="BaseResultMap" type="com.cn.edusta.domain.StatisticsDaily">
+            <id property="id" column="id" jdbcType="CHAR"/>
+            <result property="dateCalculated" column="date_calculated" jdbcType="VARCHAR"/>
+            <result property="registerNum" column="register_num" jdbcType="INTEGER"/>
+            <result property="loginNum" column="login_num" jdbcType="INTEGER"/>
+            <result property="videoViewNum" column="video_view_num" jdbcType="INTEGER"/>
+            <result property="courseNum" column="course_num" jdbcType="INTEGER"/>
+            <result property="gmtCreate" column="gmt_create" jdbcType="TIMESTAMP"/>
+            <result property="gmtModified" column="gmt_modified" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,date_calculated,register_num,
+        login_num,video_view_num,course_num,
+        gmt_create,gmt_modified
+    </sql>
+</mapper>
