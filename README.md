@@ -72,7 +72,7 @@
 
 ### 三、微服务代码打包（后端）
 
-1、填充完所有##########后先在总工程下执行**clean install**（顺序不可互调）
+1、填充完所有#########后先在总工程下执行**clean install**（顺序不可互调）
 
 ![image](https://github.com/ISabigbug/online_education/assets/121659902/408d236e-4f0a-4ee0-badd-fb15e9d8f0af)
 
