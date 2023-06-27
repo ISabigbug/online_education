@@ -46,7 +46,6 @@
         <docker.image.prefix>zx</docker.image.prefix>
         <cloud-alibaba.version>0.2.2.RELEASE</cloud-alibaba.version>
     </properties>
-
     <dependencyManagement>
         <dependencies>
             <!--Spring Cloud-->
