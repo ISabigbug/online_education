@@ -173,6 +173,7 @@
                 <artifactId>aliyun-java-vod-upload</artifactId>
                 <version>${aliyun-java-vod-upload.version}</version>
             </dependency>
+                 
             <dependency>
                 <groupId>com.aliyun</groupId>
                 <artifactId>aliyun-sdk-vod-upload</artifactId>
