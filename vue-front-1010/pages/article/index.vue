@@ -164,7 +164,6 @@ export default {
   },
 };
 </script>
-
 <style>
 /*分享标题*/
 .shareTitle {
